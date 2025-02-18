@@ -5,8 +5,6 @@ from Modules import json_functions as jf
 if __name__ == "__main__":
     url = input("Enter the URL to scrape: ")
     data = hf.scrape(url)
-    print(f"Scraped text from {data.url}:")
-    print(f"The data scraped {data.text}")
 
     # Save the scraped data to JSON
     jf.save_text_to_json(data)
