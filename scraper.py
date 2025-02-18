@@ -16,5 +16,9 @@ if __name__ == "__main__":
     print(f"Loaded data from {loaded_data.url}:")
     print(f"The data loaded {loaded_data.text}")
 
+    # Search for a keyword and highlight it in the output
+    keyword = input("Enter the keyword to search: ")
+    jf.search_and_highlight_keyword_in_json(keyword=keyword)
+
 
 

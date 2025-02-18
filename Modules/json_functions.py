@@ -12,3 +12,15 @@ def load_text_from_json(filename='scraped_data.json'):
     with open(filename, 'r') as f:
         loaded_json_data = f.read()
     return ScrapedData.from_json(loaded_json_data)
+
+def highlight_keyword(text: str, keyword: str):
+    highlighted_text = text.replace(keyword, f"\033[1;31m{keyword}\033[0m")
+    return highlighted_text
+
+def search_and_highlight_keyword_in_json(filename='scraped_data.json', keyword=''):
+    data = load_text_from_json(filename)
+    print(f"Searching for keyword '{keyword}' in the text...")
+    highlighted_text = highlight_keyword(data.text, keyword)
+    print(f"URL: {data.url}")
+    print(f"Text with highlighted keyword '{keyword}':")
+    print(highlighted_text)
