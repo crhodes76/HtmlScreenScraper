@@ -1,6 +1,12 @@
 from model import ScrapedData
+from urllib.parse import urlparse
 
-def save_text_to_json(data: ScrapedData, filename='scraped_data.json'):
+def save_text_to_json(data: ScrapedData):
+    # Extract the domain name from the URL
+    parsed_url = urlparse(data.url)
+    domain = parsed_url.netloc.split('.')[1]  # Get the main domain name
+    filename = f'{domain}_data.json'
+    
     print(f"Saving data to {filename}...")
     json_data = data.to_json(indent=4)
     with open(filename, 'w') as f:
